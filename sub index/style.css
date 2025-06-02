@@ -104,6 +104,87 @@ body {
   width: 100%;
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  padding: 5px;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--light);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 999;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 2rem 0;
+  margin: 0;
+}
+
+.mobile-nav li {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.mobile-nav a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 0.5rem;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: var(--accent);
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -897,12 +978,125 @@ body.modal-open > *:not(.modal):not(.email-modal-overlay) {
   filter: blur(5px);
 }
 
-/* Responsive Fixes */
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 1.5rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-desc {
+    font-size: 1.1rem;
+  }
+  
+  .code-preview {
+    max-width: 90%;
+    padding: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .project-images {
+  /* Navigation */
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-container {
+    justify-content: space-between;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .mobile-nav {
+    display: block;
+  }
+  
+  .brand {
+    font-size: 1.3rem;
+  }
+  
+  /* Hero Section */
+  .hero {
+    padding: 100px 1rem 2rem;
+    min-height: 90vh;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Code Preview */
+  .code-preview {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  .code-preview pre {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    overflow-x: auto;
+  }
+  
+  /* Floating Elements */
+  .floating-element {
+    font-size: 1.5rem;
+    opacity: 0.1;
+  }
+  
+  /* General Sections */
+  section {
+    padding: 3rem 1rem;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+  }
+  
+  /* Cards */
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  /* Services */
+  .services-grid {
     grid-template-columns: 1fr;
   }
   
+  /* Team */
   .team-member {
     padding-bottom: 6rem;
   }
@@ -911,7 +1105,72 @@ body.modal-open > *:not(.modal):not(.email-modal-overlay) {
     margin-bottom: 5rem;
   }
   
-  .services-grid {
+  /* Projects */
+  .project-images {
     grid-template-columns: 1fr;
+  }
+  
+  /* Modal */
+  .modal-content {
+    margin: 2vh auto;
+    padding: 1.5rem;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hero Section - Extra small screens */
+  .hero {
+    padding: 80px 0.5rem 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-desc {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+  
+  .cta-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Code Preview */
+  .code-preview {
+    padding: 0.8rem;
+    margin: 1.5rem 0;
+  }
+  
+  .code-preview pre {
+    font-size: 0.7rem;
+  }
+  
+  /* Navigation */
+  .nav-logo .logo {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .brand {
+    font-size: 1.1rem;
+  }
+  
+  /* Sections */
+  section {
+    padding: 2rem 0.5rem;
+  }
+  
+  section h2 {
+    font-size: 1.8rem;
+  }
+  
+  /* Floating Elements - Reduce for small screens */
+  .floating-element {
+    font-size: 1.2rem;
+    opacity: 0.08;
   }
 }

@@ -1,8 +1,42 @@
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Mobile Menu Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const body = document.body;
+
+  if (mobileMenuToggle && mobileNav) {
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileMenuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close mobile menu when clicking on links
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileMenuToggle.classList.remove('active');
+        mobileNav.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!mobileNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        mobileMenuToggle.classList.remove('active');
+        mobileNav.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+      }
+    });
+  }
+});
+
 // Smooth scroll for nav links
-document.querySelectorAll('.nav-links a, .cta-button').forEach(link => {
+document.querySelectorAll('.nav-links a, .mobile-nav a, .cta-button').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
     if (href && href.startsWith('#')) {
@@ -34,7 +68,7 @@ window.addEventListener('scroll', function() {
 // Add active nav link highlighting
 window.addEventListener('scroll', function() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
   
   let current = '';
   sections.forEach(section => {
