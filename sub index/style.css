@@ -349,14 +349,14 @@ section h2 {
 }
 
 .portfolio-link {
-  color: var(--accent);
+  color: white;
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.3s ease;
 }
 
 .portfolio-link:hover {
-  color: var(--primary);
+  color: white;
 }
 
 .team-member p {
