@@ -124,53 +124,195 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Contact Form Handling
+// Contact Form Handling with EmailJS
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
-  const successModal = document.getElementById('successModal');
-  const closeSuccessModal = document.getElementById('closeSuccessModal');
-  const modalOkButton = document.getElementById('modalOkButton');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      // Prevent the default mailto action
-      e.preventDefault();
-      
-      // Show the success modal immediately
-      if (successModal) {
-        successModal.style.display = 'block';
-        successModal.classList.add('show');
-        document.body.classList.add('modal-open');
-      }
-    });
-  }
-
-  // Close modal functionality
-  function closeModal() {
-    if (successModal) {
-      successModal.style.display = 'none';
-      successModal.classList.remove('show');
-      document.body.classList.remove('modal-open');
-      
-      // Reset the form
-      if (contactForm) {
-        contactForm.reset();
-      }
+  const emailModal = document.getElementById('emailModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalMessage = document.getElementById('modalMessage');
+  const modalQuestion = document.getElementById('modalQuestion');
+  const closeEmailModal = document.getElementById('closeEmailModal');
+  const modalCancel = document.getElementById('modalCancel');
+  const modalConfirm = document.getElementById('modalConfirm');
+  
+  let currentMailtoLink = '';
+  
+  // EmailJS Configuration - Replace these with your actual values
+  const EMAILJS_CONFIG = {
+    publicKey: "VftWN8vG-w97xhRzP", // Replace with your EmailJS public key
+    serviceId: "service_coders_ph",   // Replace with your EmailJS service ID
+    templateId: "template_contact"    // Replace with your EmailJS template ID
+  };
+  
+  // Check if EmailJS is available and properly configured
+  const isEmailJSReady = typeof emailjs !== 'undefined';
+  
+  if (isEmailJSReady) {
+    try {
+      emailjs.init(EMAILJS_CONFIG.publicKey);
+    } catch (error) {
+      console.warn('EmailJS initialization failed:', error);
     }
   }
-
-  if (closeSuccessModal) {
-    closeSuccessModal.addEventListener('click', closeModal);
+  
+  // Modal functions
+  function showEmailModal(title, message, question, mailtoLink) {
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+    modalQuestion.textContent = question;
+    currentMailtoLink = mailtoLink;
+    
+    emailModal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+    
+    // Add show class after a brief delay for animation
+    setTimeout(() => {
+      emailModal.classList.add('show');
+    }, 10);
   }
-
-  if (modalOkButton) {
-    modalOkButton.addEventListener('click', closeModal);
+  
+  function hideEmailModal() {
+    emailModal.classList.remove('show');
+    
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+      emailModal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      currentMailtoLink = '';
+    }, 300);
   }
-
+  
+  // Modal event listeners
+  closeEmailModal.addEventListener('click', hideEmailModal);
+  modalCancel.addEventListener('click', hideEmailModal);
+  
+  modalConfirm.addEventListener('click', function() {
+    if (currentMailtoLink) {
+      window.location.href = currentMailtoLink;
+    }
+    hideEmailModal();
+  });
+  
   // Close modal when clicking outside
-  if (successModal) {
-    successModal.addEventListener('click', function(e) {
-      if (e.target === successModal) {
-        closeModal();
+  emailModal.addEventListener('click', function(e) {
+    if (e.target === emailModal) {
+      hideEmailModal();
+    }
+  });
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && emailModal.classList.contains('show')) {
+      hideEmailModal();
+    }
+  });
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      // Prevent the default form submission
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Basic form validation
+      if (!name || !email || !message) {
+        alert('Please fill in all fields before submitting.');
+        return;
+      }
+      
+      // Change button text to show loading
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // Try to send email using EmailJS
+      if (isEmailJSReady && emailjs.send) {
+        const templateParams = {
+          from_name: name,
+          from_email: email,
+          message: message,
+          to_email: 'lanceadrn.acal@gmail.com'
+        };
+        
+        emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+          .then(function(response) {
+            console.log('Email sent successfully!', response.status, response.text);
+            handleSuccessfulSubmission(name, email, message);
+            resetButton();
+          })
+          .catch(function(error) {
+            console.error('EmailJS failed:', error);
+            handleEmailFallback(name, email, message);
+            resetButton();
+          });
+      } else {
+        // EmailJS not available or not configured - use fallback
+        console.warn('EmailJS not available, using fallback method');
+        handleEmailFallback(name, email, message);
+        resetButton();
+      }
+      
+      function resetButton() {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+      
+      function handleSuccessfulSubmission(name, email, message) {
+        // Reset the form first
+        contactForm.reset();
+        
+        // Create mailto link for copy to self
+        const subject = encodeURIComponent(`Copy: New Contact Form Message from ${name}`);
+        const body = encodeURIComponent(
+          `This is a copy of your message sent to Coders PH:\n\n` +
+          `From: ${name}\n` +
+          `Email: ${email}\n\n` +
+          `Message:\n${message}\n\n` +
+          `---\n` +
+          `Original message was sent to lanceadrn.acal@gmail.com`
+        );
+        
+        const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+        
+        // Show custom modal
+        showEmailModal(
+          'Message Sent Successfully!',
+          'Your message has been delivered to Coders PH team. We\'ll get back to you soon!',
+          'Would you like to send a copy to yourself?',
+          mailtoLink
+        );
+      }
+      
+      function handleEmailFallback(name, email, message) {
+        // Reset the form first
+        contactForm.reset();
+        
+        // Create mailto link
+        const subject = encodeURIComponent(`New Contact Form Message from ${name}`);
+        const body = encodeURIComponent(
+          `Hello Coders PH Team,\n\n` +
+          `You have received a new message from your website contact form:\n\n` +
+          `From: ${name}\n` +
+          `Email: ${email}\n\n` +
+          `Message:\n${message}\n\n` +
+          `---\n` +
+          `This email was sent from the Coders PH website contact form.`
+        );
+        
+        const mailtoLink = `mailto:lanceadrn.acal@gmail.com?subject=${subject}&body=${body}`;
+        
+        // Show custom modal for fallback
+        showEmailModal(
+          'Ready to Send Message',
+          'Your message is ready to be sent to the Coders PH team.',
+          'Would you like to open your email client to send this message?',
+          mailtoLink
+        );
       }
     });
   }

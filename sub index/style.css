@@ -730,7 +730,7 @@ body.modal-open {
   overflow: hidden;
 }
 
-body.modal-open > *:not(.modal) {
+body.modal-open > *:not(.modal):not(.email-modal-overlay) {
   filter: blur(5px);
 }
 

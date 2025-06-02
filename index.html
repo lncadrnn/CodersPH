@@ -2,10 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coders PH | Filipino Developers & Designers</title>
-  <link rel="icon" type="image/png" href="img/LogoNoBG.png">
-  <link rel="stylesheet" href="sub index/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Coders PH | Filipino Developers & Designers</title>
+  <link rel="icon" type="image/png" href="img/LogoNoBG.png">  <link rel="stylesheet" href="sub index/style.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>    /* Custom Email Modal Styles */
+    .email-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .email-modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .email-modal {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      transform: scale(0.8) translateY(50px);
+      transition: all 0.3s ease;
+    }
+
+    .email-modal-overlay.show .email-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .email-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .email-modal-header h3 {
+      margin: 0;
+      color: var(--light);
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--glass-border);
+      color: var(--light);
+    }
+
+    .email-modal-body {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .modal-icon {
+      margin-bottom: 1.5rem;
+    }
+
+    .success-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #4CAF50, #8BC34A);
+      border-radius: 50%;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0 auto;
+      animation: successPulse 0.6s ease-out;
+    }
+
+    @keyframes successPulse {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .email-modal-body p {
+      color: var(--gray);
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+
+    #modalMessage {
+      font-size: 1.1rem;
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    .email-modal-footer {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--glass-border);
+      justify-content: flex-end;
+    }
+
+    .modal-btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      min-width: 120px;
+    }
+
+    .modal-btn-secondary {
+      background: var(--glass-bg);
+      color: var(--gray);
+      border: 1px solid var(--glass-border);
+    }
+
+    .modal-btn-secondary:hover {
+      background: var(--glass-border);
+      color: var(--light);
+    }
+
+    .modal-btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .modal-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .email-modal {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+      }
+
+      .email-modal-footer {
+        flex-direction: column;
+      }
+
+      .modal-btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -387,8 +573,7 @@
   <section id="contact-form">
     <h2>Get In Touch</h2>
     <div style="max-width: 600px; margin: 0 auto;">
-      <div class="card" style="padding: 2rem;">
-        <form id="contactForm" action="mailto:lanceadrn.acal@gmail.com" method="post" enctype="text/plain">
+      <div class="card" style="padding: 2rem;">        <form id="contactForm">
           <div style="margin-bottom: 1.5rem;">
             <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--light);">Name</label>
             <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--light);">
@@ -401,24 +586,27 @@
             <label for="message" style="display: block; margin-bottom: 0.5rem; color: var(--light);">Message</label>
             <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--light); resize: vertical;"></textarea>
           </div>
-          <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
-        </form>
+          <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Send Message</button>        </form>
       </div>
     </div>  </section>
 
-  <!-- Success Modal -->
-  <div class="modal" id="successModal" style="display: none;">
-    <div class="modal-content" style="max-width: 500px; text-align: center;">
-      <span class="close-modal" id="closeSuccessModal">&times;</span>
-      <div style="margin: 2rem 0;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
-        <h2 style="color: var(--light); margin-bottom: 1rem;">Message Sent Successfully!</h2>
-        <p style="color: var(--gray); margin-bottom: 2rem;">
-          Thank you for reaching out! Your message has been sent and we'll get back to you as soon as possible.
-        </p>
-        <button class="cta-button" id="modalOkButton" style="border: none; cursor: pointer;">
-          Got it!
-        </button>
+  <!-- Custom Email Confirmation Modal -->
+  <div class="email-modal-overlay" id="emailModal" style="display: none;">
+    <div class="email-modal">
+      <div class="email-modal-header">
+        <h3 id="modalTitle">Message Sent Successfully!</h3>
+        <button class="modal-close-btn" id="closeEmailModal">&times;</button>
+      </div>
+      <div class="email-modal-body">
+        <div class="modal-icon">
+          <div class="success-icon">✓</div>
+        </div>
+        <p id="modalMessage">Your message has been processed successfully.</p>
+        <p id="modalQuestion">Would you like to open your email client to send this message?</p>
+      </div>
+      <div class="email-modal-footer">
+        <button class="modal-btn modal-btn-secondary" id="modalCancel">No, Thanks</button>
+        <button class="modal-btn modal-btn-primary" id="modalConfirm">Yes, Open Email</button>
       </div>
     </div>
   </div>
