@@ -538,6 +538,12 @@ button,
   padding: 2rem;
 }
 
+.team-member .role {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
 .team-member .social-links {
   margin-top: auto;
   padding: 1rem 0;
