@@ -351,10 +351,13 @@
           </div>          <div class="tech-icon-container">
             <img src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg" alt="Cloudinary" width="30">
             <span class="tech-label">Cloudinary</span>
-          </div>
-          <div class="tech-icon-container">
+          </div>          <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" width="30">
             <span class="tech-label">AWS</span>
+          </div>
+          <div class="tech-icon-container">
+            <img src="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png" alt="Vercel" width="30">
+            <span class="tech-label">Vercel</span>
           </div>
         </p>
       </div>
@@ -385,7 +388,7 @@
     <h2>Get In Touch</h2>
     <div style="max-width: 600px; margin: 0 auto;">
       <div class="card" style="padding: 2rem;">
-        <form action="mailto:lanceadrn.acal@gmail.com" method="post" enctype="text/plain">
+        <form id="contactForm" action="mailto:lanceadrn.acal@gmail.com" method="post" enctype="text/plain">
           <div style="margin-bottom: 1.5rem;">
             <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--light);">Name</label>
             <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--light);">
@@ -401,8 +404,24 @@
           <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
         </form>
       </div>
+    </div>  </section>
+
+  <!-- Success Modal -->
+  <div class="modal" id="successModal" style="display: none;">
+    <div class="modal-content" style="max-width: 500px; text-align: center;">
+      <span class="close-modal" id="closeSuccessModal">&times;</span>
+      <div style="margin: 2rem 0;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+        <h2 style="color: var(--light); margin-bottom: 1rem;">Message Sent Successfully!</h2>
+        <p style="color: var(--gray); margin-bottom: 2rem;">
+          Thank you for reaching out! Your message has been sent and we'll get back to you as soon as possible.
+        </p>
+        <button class="cta-button" id="modalOkButton" style="border: none; cursor: pointer;">
+          Got it!
+        </button>
+      </div>
     </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">

@@ -92,8 +92,23 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal.show').forEach(modal => {
       modal.classList.remove('show');
+      modal.style.display = 'none';
       document.body.classList.remove('modal-open');
     });
+    
+    // Also close success modal specifically
+    const successModal = document.getElementById('successModal');
+    if (successModal && successModal.style.display === 'block') {
+      successModal.style.display = 'none';
+      successModal.classList.remove('show');
+      document.body.classList.remove('modal-open');
+      
+      // Reset the form
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.reset();
+      }
+    }
   }
 });
 
@@ -105,6 +120,59 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       // Redirect to main page with team section anchor
       window.location.href = '../index.html#team';
+    });
+  }
+});
+
+// Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const successModal = document.getElementById('successModal');
+  const closeSuccessModal = document.getElementById('closeSuccessModal');
+  const modalOkButton = document.getElementById('modalOkButton');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      // Allow the default mailto action to proceed
+      // Then show the success modal after a brief delay
+      setTimeout(() => {
+        if (successModal) {
+          successModal.style.display = 'block';
+          successModal.classList.add('show');
+          document.body.classList.add('modal-open');
+        }
+      }, 500);
+    });
+  }
+
+  // Close modal functionality
+  function closeModal() {
+    if (successModal) {
+      successModal.style.display = 'none';
+      successModal.classList.remove('show');
+      document.body.classList.remove('modal-open');
+      
+      // Reset the form
+      if (contactForm) {
+        contactForm.reset();
+      }
+    }
+  }
+
+  if (closeSuccessModal) {
+    closeSuccessModal.addEventListener('click', closeModal);
+  }
+
+  if (modalOkButton) {
+    modalOkButton.addEventListener('click', closeModal);
+  }
+
+  // Close modal when clicking outside
+  if (successModal) {
+    successModal.addEventListener('click', function(e) {
+      if (e.target === successModal) {
+        closeModal();
+      }
     });
   }
 });
