@@ -6,11 +6,128 @@
   <title>Adrian Noroña - Portfolio | Coders PH</title>
   <link rel="icon" type="image/png" href="img/LogoNoBG.png">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .portfolio-hero {
+  <style>    .portfolio-hero {
       background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
       padding: 120px 2rem 80px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .portfolio-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+      z-index: 1;
+    }
+    
+    .portfolio-floating-emoji {
+      position: absolute;
+      opacity: 0.15;
+      font-size: 1.8rem;
+      user-select: none;
+      pointer-events: none;
+      z-index: 2;
+      animation: portfolioFloat 10s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(1) {
+      top: 15%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .portfolio-floating-emoji:nth-child(2) {
+      top: 25%;
+      right: 15%;
+      animation-delay: 2s;
+      animation: portfolioFloatSlow 12s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(3) {
+      bottom: 30%;
+      left: 20%;
+      animation-delay: 4s;
+      animation: portfolioFloatBounce 8s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(4) {
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 1s;
+      animation: portfolioFloatRotate 9s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(5) {
+      top: 50%;
+      left: 5%;
+      animation-delay: 3s;
+      animation: portfolioFloat 7s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(6) {
+      top: 40%;
+      right: 5%;
+      animation-delay: 5s;
+      animation: portfolioFloatSlow 11s ease-in-out infinite;
+    }
+    
+    @keyframes portfolioFloat {
+      0%, 100% { 
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.15;
+      }
+      50% { 
+        transform: translateY(-20px) translateX(10px) rotate(10deg);
+        opacity: 0.25;
+      }
+    }
+    
+    @keyframes portfolioFloatSlow {
+      0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.15;
+      }
+      33% { 
+        transform: translateY(-15px) translateX(-8px) scale(1.05);
+        opacity: 0.22;
+      }
+      66% { 
+        transform: translateY(-8px) translateX(12px) scale(0.98);
+        opacity: 0.18;
+      }
+    }
+    
+    @keyframes portfolioFloatBounce {
+      0%, 100% { 
+        transform: translateY(0px) scale(1);
+        opacity: 0.15;
+      }
+      25% { 
+        transform: translateY(-25px) scale(1.08);
+        opacity: 0.28;
+      }
+      75% { 
+        transform: translateY(-12px) scale(1.03);
+        opacity: 0.2;
+      }
+    }
+    
+    @keyframes portfolioFloatRotate {
+      0%, 100% { 
+        transform: rotate(0deg) translateY(0px);
+        opacity: 0.15;
+      }
+      50% { 
+        transform: rotate(180deg) translateY(-18px);
+        opacity: 0.25;
+      }
     }
     
     .portfolio-intro {
@@ -136,9 +253,14 @@
   </style>
 </head>
 <body>
-  <a href="../index.html#team" class="back-link">← Back to Team</a>
-    <!-- Portfolio Hero -->
+  <a href="../index.html#team" class="back-link">← Back to Team</a>  <!-- Portfolio Hero -->
   <section class="portfolio-hero">
+    <div class="portfolio-floating-emoji">🐍</div>
+    <div class="portfolio-floating-emoji">🗄️</div>
+    <div class="portfolio-floating-emoji">☕</div>
+    <div class="portfolio-floating-emoji">🐘</div>
+    <div class="portfolio-floating-emoji">🔥</div>
+    <div class="portfolio-floating-emoji">📡</div>
     <div class="portfolio-intro">
       <img src="../img/adrian.png" alt="Adrian Noroña">
       <h1>Adrian Noroña</h1>      <p>Back-End Developer & Database Administrator</p>
