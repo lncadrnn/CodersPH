@@ -96,3 +96,15 @@ document.addEventListener('keydown', function(e) {
     });
   }
 });
+
+// Handle back link redirect to team section
+document.addEventListener('DOMContentLoaded', function() {
+  const backLink = document.querySelector('.back-link');
+  if (backLink) {
+    backLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Redirect to main page with team section anchor
+      window.location.href = '../index.html#team';
+    });
+  }
+});
