@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lance Adrian Acal - Portfolio | Coders PH</title>
+  <link rel="icon" type="image/png" href="img/LogoNoBG.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .portfolio-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+      padding: 120px 2rem 80px;
+      text-align: center;
+    }
+    
+    .portfolio-intro {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .portfolio-intro img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      border: 4px solid var(--primary);
+    }
+    
+    .portfolio-intro h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .portfolio-intro p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+    
+    .portfolio-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .portfolio-link {
+      padding: 0.8rem 1.5rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .portfolio-link:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .certificate-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .certificate-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    }
+    
+    .certificate-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .certificate-item h3 {
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+    
+    .certificate-item p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    .view-certificate {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .view-certificate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 0.8rem 1.5rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-link:hover {
+      background: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <a href="/index.html" class="back-link">← Back to Main Site</a>
+  
+  <!-- Portfolio Hero -->
+  <section class="portfolio-hero">
+    <div class="portfolio-intro">
+      <img src="/img/Lance.png" alt="Lance Adrian Acal">
+      <h1>Lance Adrian Acal</h1>
+      <p>Full-Stack Developer & Project Manager</p>
+      <p>Passionate about creating digital solutions that make a difference. Specializing in web development, business systems, and data visualization.</p>
+      
+      <div class="portfolio-links">
+        <a href="mailto:lanceadrn.acal@gmail.com" class="portfolio-link">📧 Email</a>
+        <a href="https://github.com/lncadrnn" target="_blank" class="portfolio-link">💻 GitHub</a>
+        <a href="#projects" class="portfolio-link">🚀 Projects</a>
+        <a href="#certificates" class="portfolio-link">🏆 Certificates</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Certificates -->
+  <section id="certificates">
+    <h2>Certifications & Achievements</h2>
+    <div class="certificates-grid">
+      <div class="certificate-item">
+        <div class="certificate-icon">🌐</div>
+        <h3>Basic Web Development</h3>
+        <p>Fundamentals of HTML, CSS, and JavaScript for modern web development</p>
+        <a href="Certificates/Basic Web Development Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      <div class="certificate-item">
+        <div class="certificate-icon">🐍</div>
+        <h3>Python Fundamentals</h3>
+        <p>Core Python programming concepts, data structures, and basic algorithms</p>
+        <a href="Certificates/Python Fundamentals Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      <div class="certificate-item">
+        <div class="certificate-icon">📊</div>
+        <h3>Power BI Analytics</h3>
+        <p>Business intelligence and data visualization using Microsoft Power BI</p>
+        <a href="Certificates/PowerBI Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      <div class="certificate-item">
+        <div class="certificate-icon">📈</div>
+        <h3>Data Science Fundamentals</h3>
+        <p>Introduction to data science concepts, statistics, and analytical thinking</p>
+        <a href="Certificates/Data Science Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      <div class="certificate-item">
+        <div class="certificate-icon">📋</div>
+        <h3>Excel Mastery</h3>
+        <p>Advanced Excel functions, pivot tables, and data analysis techniques</p>
+        <a href="Certificates/Intro to Excel Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      <div class="certificate-item">
+        <div class="certificate-icon">📊</div>
+        <h3>Introduction to Excel</h3>
+        <p>Fundamentals of Microsoft Excel for data management and analysis</p>
+        <a href="Certificates/Excel Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3>Let's Work Together</h3>
+        <p>Ready to bring your ideas to life? I'm available for freelance projects and full-time opportunities.</p>
+        <a href="mailto:lanceadrn.acal@gmail.com" class="view-certificate">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Lance Adrian Acal | Coders PH. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
