@@ -130,18 +130,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const successModal = document.getElementById('successModal');
   const closeSuccessModal = document.getElementById('closeSuccessModal');
   const modalOkButton = document.getElementById('modalOkButton');
-
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-      // Allow the default mailto action to proceed
-      // Then show the success modal after a brief delay
-      setTimeout(() => {
-        if (successModal) {
-          successModal.style.display = 'block';
-          successModal.classList.add('show');
-          document.body.classList.add('modal-open');
-        }
-      }, 500);
+      // Prevent the default mailto action
+      e.preventDefault();
+      
+      // Show the success modal immediately
+      if (successModal) {
+        successModal.style.display = 'block';
+        successModal.classList.add('show');
+        document.body.classList.add('modal-open');
+      }
     });
   }
 
