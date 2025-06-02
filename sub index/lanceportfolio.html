@@ -27,7 +27,7 @@
     }
     
     .portfolio-intro h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 1rem;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       background-clip: text;
@@ -36,7 +36,7 @@
     }
     
     .portfolio-intro p {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       color: var(--gray);
       margin-bottom: 2rem;
     }
@@ -56,11 +56,110 @@
       color: var(--light);
       text-decoration: none;
       transition: all 0.3s ease;
+      position: relative;
     }
     
     .portfolio-link:hover {
       background: var(--primary);
       transform: translateY(-2px);
+    }
+    
+    /* Focus styles for accessibility */
+    .portfolio-link:focus,
+    .view-certificate:focus,
+    .back-link:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    /* Hamburger menu for mobile */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    .mobile-menu-toggle:hover {
+      background: var(--glass-bg);
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .mobile-nav-close {
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-close:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    
+    .mobile-nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a:focus {
+      background: var(--glass-bg);
+      color: var(--accent);
+      outline: none;
     }
     
     .certificates-grid {
@@ -77,27 +176,46 @@
       border-radius: 15px;
       padding: 2rem;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideInUp 0.6s ease forwards;
+    }
+    
+    .certificate-item:nth-child(1) { animation-delay: 0.1s; }
+    .certificate-item:nth-child(2) { animation-delay: 0.2s; }
+    .certificate-item:nth-child(3) { animation-delay: 0.3s; }
+    .certificate-item:nth-child(4) { animation-delay: 0.4s; }
+    .certificate-item:nth-child(5) { animation-delay: 0.5s; }
+    .certificate-item:nth-child(6) { animation-delay: 0.6s; }
+    
+    @keyframes slideInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
     
     .certificate-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
     }
     
     .certificate-icon {
-      font-size: 3rem;
+      font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 1rem;
     }
     
     .certificate-item h3 {
       color: var(--light);
       margin-bottom: 0.5rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     }
     
     .certificate-item p {
       color: var(--gray);
       margin-bottom: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
     }
     
     .view-certificate {
@@ -109,11 +227,28 @@
       border-radius: 5px;
       font-size: 0.9rem;
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .view-certificate::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .view-certificate:hover::before {
+      left: 100%;
     }
     
     .view-certificate:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
     
     .back-link {
@@ -129,33 +264,125 @@
       transition: all 0.3s ease;
       z-index: 1000;
     }
-      .back-link:hover {
+    
+    .back-link:hover {
       background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #000;
+    }
+    
+    /* Responsive headings */
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+    
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    
+    h3 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+    }
+    
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .portfolio-hero {
+        padding: 100px 1rem 60px;
+      }
+      
+      .portfolio-intro img {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .portfolio-links {
+        gap: 0.5rem;
+      }
+      
+      .portfolio-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      
+      .certificate-item {
+        padding: 1.5rem;
+      }
+      
+      .back-link {
+        top: 15px;
+        left: 15px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .portfolio-hero {
+        padding: 80px 0.5rem 40px;
+      }
+      
+      .certificate-item {
+        padding: 1rem;
+      }
+      
+      .certificates-grid {
+        padding: 0 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="../index.html#team" class="back-link">← Back to Team</a>
-    <!-- Portfolio Hero -->
-  <section class="portfolio-hero">
+  <!-- Navigation for mobile -->
+  <nav class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+    <div class="mobile-nav-header">
+      <div class="nav-logo">
+        <img src="../img/LogoNoBG.png" alt="Coders PH Logo" class="logo">
+        <span class="brand">Coders PH</span>
+      </div>
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open mobile menu">☰</button>
+  
+  <a href="../index.html#team" class="back-link" role="button" aria-label="Go back to team section">← Back to Team</a>
+  
+  <!-- Portfolio Hero -->
+  <header class="portfolio-hero" role="banner">
     <div class="portfolio-intro">
-      <img src="../img/Lance.png" alt="Lance Adrian Acal">
-      <h1>Lance Adrian Acal</h1>      <p>Front-End Lead Developer & System Analyst</p>
+      <img src="../img/Lance.png" alt="Professional headshot of Lance Adrian Acal">
+      <h1>Lance Adrian Acal</h1>
+      <p>Front-End Lead Developer & System Analyst</p>
       <p>Founder of Coders PH, I specialize in frontend development and data visualization with a passion for creating clean, modern web applications. I lead our team in transforming complex business requirements into intuitive digital solutions. My expertise spans from system analysis and architecture design to implementing cutting-edge frontend technologies that deliver exceptional user experiences. I believe in the power of well-crafted code to drive business success and user satisfaction.</p>
       
       <div class="portfolio-links">
-        <a href="mailto:lanceadrn.acal@gmail.com" class="portfolio-link">📧 Email</a>
-        <a href="https://github.com/lncadrnn" target="_blank" class="portfolio-link">💻 GitHub</a>
-        <a href="https://linkedin.com/in/lncadrnn" target="_blank" class="portfolio-link">💼 LinkedIn</a>
+        <a href="mailto:lanceadrn.acal@gmail.com" class="portfolio-link" aria-label="Send email to Lance">📧 Email</a>
+        <a href="https://github.com/lncadrnn" target="_blank" class="portfolio-link" aria-label="Visit Lance's GitHub profile">💻 GitHub</a>
+        <a href="https://linkedin.com/in/lncadrnn" target="_blank" class="portfolio-link" aria-label="Visit Lance's LinkedIn profile">💼 LinkedIn</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="cards-container">      <div class="card">
+  <main role="main">
+    <!-- About Section -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <div class="cards-container">      <div class="card">
         <h3>Frontend Development</h3>
         <p>I create responsive and interactive user interfaces that prioritize both performance and user experience. My approach combines modern development practices with clean, maintainable code architecture to deliver exceptional digital solutions.</p>
       </div>
@@ -169,10 +396,11 @@
       </div>
     </div>
   </section>
-  <!-- Certificates Section -->
-  <section id="certificates">
-    <h2>Certifications & Achievements</h2>
-    <div class="certificates-grid">      <div class="certificate-item">
+    
+    <!-- Certificates Section -->
+    <section id="certificates" aria-labelledby="certificates-heading">
+      <h2 id="certificates-heading">Certifications & Achievements</h2>
+      <div class="certificates-grid">      <div class="certificate-item">
         <div class="certificate-icon">🌐</div>
         <h3>Basic Web Development</h3>
         <p>Foundational web development skills and modern frontend practices</p>
@@ -215,21 +443,94 @@
     </div>
   </section>
 
-  <!-- Contact CTA -->
-  <section>
-    <div class="contact-grid">      <div class="contact-item">
-        <h3>Let's Work Together</h3>
-        <p>Ready to bring your ideas to life? I'm available for freelance projects and full-time opportunities.</p>
-        <a href="mailto:lanceadrn.acal@gmail.com" class="view-certificate" style="margin-top: 1.5rem; display: inline-block;">Get In Touch</a>
+    <!-- Contact CTA -->
+    <section aria-labelledby="contact-heading">
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3 id="contact-heading">Let's Work Together</h3>
+          <p>Ready to bring your ideas to life? I'm available for freelance projects and full-time opportunities.</p>
+          <a href="mailto:lanceadrn.acal@gmail.com" class="view-certificate" style="margin-top: 1.5rem; display: inline-block;" aria-label="Contact Lance via email">Get In Touch</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <p>© 2025 Lance Adrian Acal | Coders PH. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    
+    function openMobileMenu() {
+      mobileNav.style.display = 'block';
+      setTimeout(() => {
+        mobileNav.classList.add('active');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileMenu() {
+      mobileNav.classList.remove('active');
+      setTimeout(() => {
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+    
+    mobileMenuToggle.addEventListener('click', openMobileMenu);
+    mobileNavClose.addEventListener('click', closeMobileMenu);
+    
+    // Close mobile menu when clicking outside
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) {
+        closeMobileMenu();
+      }
+    });
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.certificate-item').forEach(item => {
+      observer.observe(item);
+    });
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
