@@ -25,7 +25,7 @@ Coders PH is a student-led development team from Cavite State University - Imus,
 
 ## 🌟 Featured Projects
 
-### Chandria's La Robe - Gowns & Suit Rental Platform
+### 👗 Chandria's La Robe - Gowns & Suit Rental Platform
 
 A comprehensive rental management system that streamlines the process of renting formal wear. Features include:
 
@@ -60,6 +60,34 @@ Welcome to the Ramenila Admin Dashboard! This project is a comprehensive admin p
   - ↔️ Collapsible Sidebar: Responsive sidebar for easy navigation
 
 **Tech Stack**: HTML5, CSS3, JavaScript (Vanilla), Font Awesome
+
+### 🍜 POS Ramenila - Point-of-Sale Desktop Application
+
+A Point-of-Sale (POS) system designed for Ramenila, a restaurant bringing authentic Japanese ramen to the heart of Manila. This system streamlines customer orders, billing, and transaction history while ensuring an intuitive and efficient user experience.
+
+#### 🚀 Features
+
+**🖥️ General Functionalities**:
+- Custom GUI Design – Built using CustomTkinter for a modern, user-friendly interface
+- Seamless Page Navigation – Smooth transitions between sections
+- Login System – Secure login for crew members
+- Receipt Generation – Automatic receipts with unique reference numbers
+- VAT & Discounts – Automatic 12% VAT and 20% discount for PWDs & Seniors (RA 9337 & RA 9257)
+- Windows Executable (.exe) – Runs independently on Windows without extra dependencies
+
+**👥 Customer Features**:
+- Dine-in & Takeout Options – Users can choose how they want to enjoy their ramen
+- Scrollable Menus – Easy-to-navigate ramen and drinks selection
+- Order Customization – Modify orders with add-ons
+- Checkout Process – Displays subtotal, total + VAT, and change amount
+
+**🍜 Crew Features**:
+- POS System – Includes ramen & drinks menus with an interactive ordering system
+- Transaction History – Track all past orders
+- Order Adjustment – Modify, cancel, or reset orders
+- Time Display – Tracks order timestamps for better record-keeping
+
+**Tech Stack**: Python, CustomTkinter, Tkinter
 
 ---
 

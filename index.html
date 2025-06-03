@@ -312,8 +312,7 @@
         <p>Design and implement robust database systems with optimized performance, ensuring secure and efficient data management for your applications.</p>
       </div>
     </div>
-  </section>
-  <!-- Featured Projects Section -->
+  </section>  <!-- Featured Projects Section -->
   <section id="featured-projects">
     <h2>Featured Projects</h2>    <div class="cards-container">
       <div class="card project-card" data-project="gowns-rental">
@@ -324,6 +323,11 @@
       <div class="card project-card" data-project="ramenila">
         <h3>🍜 Ramenila - Restaurant Management Web System</h3>
         <p>A comprehensive admin panel designed to manage a ramen restaurant's inventory, sales, and overall operations efficiently.</p>
+        <span class="view-details">Click to view details</span>
+      </div>
+      <div class="card project-card" data-project="pos-ramenila">
+        <h3>🖥️ Ramenila - Point-of-Sale Desktop Application</h3>
+        <p>A Point-of-Sale (POS) system designed for Ramenila restaurant, bringing authentic Japanese ramen to Manila with streamlined ordering and billing.</p>
         <span class="view-details">Click to view details</span>
       </div>
     </div>
@@ -454,7 +458,6 @@
       </div>
     </div>
   </div>
-
   <!-- Ramenila Project Modal -->
   <div class="modal" id="modal-ramenila">
     <div class="modal-content">
@@ -499,6 +502,58 @@
     </div>
   </div>
 
+  <!-- POS Ramenila Project Modal -->
+  <div class="modal" id="modal-pos-ramenila">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>🖥️ Ramenila - Point-of-Sale Desktop Application</h2>
+      <div class="project-images">
+        <img src="img/lance - projects/ramnila py/login.png" alt="POS Ramenila Login Screen">
+        <img src="img/lance - projects/ramnila py/home.png" alt="POS Ramenila Main Interface">
+        <img src="img/lance - projects/ramnila py/inventory.png" alt="POS Ramenila Inventory Management">
+        <img src="img/lance - projects/ramnila py/transac.png" alt="POS Ramenila Transaction History">
+      </div>
+      <div class="project-details">
+        <h3>Project Overview</h3>
+        <p>A Point-of-Sale (POS) system designed for Ramenila, a restaurant bringing authentic Japanese ramen to the heart of Manila. This system streamlines customer orders, billing, and transaction history while ensuring an intuitive and efficient user experience.</p>
+        
+        <h4>⚙️ General Functionalities:</h4>
+        <ul>
+          <li>Custom GUI Design – Built using CustomTkinter for a modern, user-friendly interface</li>
+          <li>Seamless Page Navigation – Smooth transitions between sections</li>
+          <li>Login System – Secure login for crew members</li>
+          <li>Receipt Generation – Automatic receipts with unique reference numbers</li>
+          <li>VAT & Discounts – Automatic 12% VAT and 20% discount for PWDs & Seniors (RA 9337 & RA 9257)</li>
+          <li>Windows Executable (.exe) – Runs independently on Windows without extra dependencies</li>
+        </ul>
+
+        <h4>👥 Customer Features:</h4>
+        <ul>
+          <li>Dine-in & Takeout Options – Users can choose how they want to enjoy their ramen</li>
+          <li>Scrollable Menus – Easy-to-navigate ramen and drinks selection</li>
+          <li>Order Customization – Modify orders with add-ons</li>
+          <li>Checkout Process – Displays subtotal, total + VAT, and change amount</li>
+        </ul>
+
+        <h4>🍜 Crew Features:</h4>
+        <ul>
+          <li>POS System – Includes ramen & drinks menus with an interactive ordering system</li>
+          <li>Transaction History – Track all past orders</li>
+          <li>Order Adjustment – Modify, cancel, or reset orders</li>
+          <li>Time Display – Tracks order timestamps for better record-keeping</li>
+        </ul>
+
+        <div class="tech-stack">
+          <h4>Technologies Used:</h4>
+          <p>Python, Tkinter</p>
+          <br>
+          <h4>Features:</h4>
+          <p>Desktop Application • Windows Executable • Modern GUI • Receipt Generation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Skills Section -->
   <section id="skills">
     <h2>Technologies We Use</h2>
@@ -510,10 +565,14 @@
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="30">
             <span class="tech-label">React</span>
           </div>
+         
+          <!-- VUE JS 
           <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" width="30">
             <span class="tech-label">Vue.js</span>
           </div>
+          -->
+
           <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" width="30">
             <span class="tech-label">HTML5</span>
@@ -521,14 +580,20 @@
           <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" width="30">
             <span class="tech-label">CSS3</span>
-          </div>
-          <div class="tech-icon-container">
+          </div>          <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="30">
             <span class="tech-label">JavaScript</span>
           </div>
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Tkinter" width="30">
+            <span class="tech-label">Tkinter</span>
+          </div>
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="JavaFX" width="30">
+            <span class="tech-label">JavaFX</span>
+          </div>
         </p>
-      </div>
-      <div class="skill-item">
+      </div>      <div class="skill-item">
         <h4>Backend</h4>
         <p>
           <div class="tech-icon-container">
@@ -540,14 +605,54 @@
             <span class="tech-label">Python</span>
           </div>
           <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" width="30">
+            <span class="tech-label">Java</span>
+          </div>
+          <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" width="30">
             <span class="tech-label">PHP</span>
-          </div>
+          </div> </p>
+
+          <!-- EXPRESS JS 
           <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" width="30">
             <span class="tech-label">Express.js</span>
+          </div>        </p>
+          -->
+
+      </div>      
+      
+      <div class="skill-item">
+        <h4>Mobile Development</h4>
+        <p>
+
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" width="30">
+            <span class="tech-label">Kotlin</span>
+          </div>
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" width="30">
+            <span class="tech-label">Android</span>
+          </div>
+
+          <!-- FLUTTER 
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" width="30">
+            <span class="tech-label">Flutter</span>
+          </div>
+          -->
+
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" width="30">
+            <span class="tech-label">React Native</span>
+          </div>        
+        <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" width="30">
+            <span class="tech-label">Java</span>
           </div>
         </p>
+
+          
       </div>
       <div class="skill-item">
         <h4>Database</h4>
@@ -556,10 +661,13 @@
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" width="30">
             <span class="tech-label">MySQL</span>
           </div>
+
+          <!-- postgre 
           <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="30">
             <span class="tech-label">PostgreSQL</span>
-          </div>
+          </div> 
+          -->
           <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="30">
             <span class="tech-label">MongoDB</span>
@@ -571,12 +679,15 @@
           <div class="tech-icon-container">
             <img src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/pgadmin-icon.png" alt="pgAdmin" width="30" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
             <span class="tech-label">pgAdmin</span>
-          </div>
-        </p>
-      </div>
-      <div class="skill-item">
-        <h4>Analytics</h4>
+          </div>        </p>
+      </div>      <div class="skill-item">
+        <h4>Tools</h4>
         <p>
+          <div class="tech-icon-container">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="30">
+            <span class="tech-label">Git</span>
+          </div>
+
           <div class="tech-icon-container">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" width="30">
             <span class="tech-label">Power BI</span>
@@ -586,33 +697,20 @@
             <span class="tech-label">Excel</span>
           </div>
           <div class="tech-icon-container">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Analytics" width="30">
-            <span class="tech-label">Analytics</span>
-          </div>
-        </p>
-      </div>
-      <div class="skill-item">
-        <h4>Tools</h4>
-        <p>
-          <div class="tech-icon-container">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="30">
-            <span class="tech-label">Git</span>
-          </div>
-
-          <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" width="30">
             <span class="tech-label">Figma</span>
           </div>          <div class="tech-icon-container">
             <img src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg" alt="Cloudinary" width="30">
             <span class="tech-label">Cloudinary</span>
-          </div>          <div class="tech-icon-container">
+          </div>          
+          
+          <!-- AWS 
+          <div class="tech-icon-container">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" width="30">
             <span class="tech-label">AWS</span>
           </div>
-          <div class="tech-icon-container">
-            <img src="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png" alt="Vercel" width="30">
-            <span class="tech-label">Vercel</span>
-          </div>
+          -->
+
         </p>
       </div>
     </div>
