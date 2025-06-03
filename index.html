@@ -331,12 +331,16 @@
         <span class="view-details">Click to view details</span>
       </div>
     </div>
-    
-    <!-- Second Row of Featured Projects -->
+      <!-- Second Row of Featured Projects -->
     <div class="cards-container" style="margin-top: 2rem;">
       <div class="card project-card" data-project="powerbi-dashboards">
         <h3>📊 Power BI Data Analytics Dashboards</h3>
         <p>Interactive business intelligence dashboards featuring financial analysis, movie dataset insights, and comprehensive data visualizations.</p>
+        <span class="view-details">Click to view details</span>
+      </div>
+      <div class="card project-card" data-project="arduino-color-sorter">
+        <h3>🔴🔵 Arduino Color Ball Sorter</h3>
+        <p>An automated system that sorts balls based on their color, differentiating between red and blue balls using Arduino Uno and servo motors.</p>
         <span class="view-details">Click to view details</span>
       </div>
     </div>
@@ -607,6 +611,64 @@
           <br>
           <h4>Key Features:</h4>
           <p>Interactive Visualizations • Real-time Data Processing • Custom KPIs • Advanced Analytics</p>
+        </div>
+      </div>
+    </div>  </div>
+
+  <!-- Arduino Color Ball Sorter Project Modal -->
+  <div class="modal" id="modal-arduino-color-sorter">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>🔴🔵 Arduino Color Ball Sorter</h2>
+      <div class="project-images">
+        <img src="img/lance - projects/color ball sorter/final structure (painted).JPG" alt="Arduino Color Ball Sorter Final Structure">
+        <img src="img/lance - projects/color ball sorter/all wirings.JPG" alt="Arduino Color Ball Sorter Wiring Diagram">
+      </div>
+      <div class="project-details">
+        <h3>📌 Project Overview</h3>
+        <p>The Arduino Color Ball Sorter is an automated system that sorts balls based on their color. Currently, it differentiates between red and blue balls, directing each to the appropriate container. Future updates will introduce support for additional colors.</p>
+        <p>This Arduino project is in compliance with our subject, <strong>Application Development and Emerging Technologies</strong>.</p>
+        
+        <h4>🎯 Features:</h4>
+        <ul>
+          <li>Automatically detects and sorts red and blue balls</li>
+          <li>Uses an Arduino Uno for processing</li>
+          <li>Utilizes servo motors for ball movement</li>
+          <li>Powered by a 9V battery</li>
+          <li>Future updates will expand color detection capabilities</li>
+        </ul>
+
+        <h4>🛠️ Hardware Components:</h4>
+        <ul>
+          <li>Arduino Uno (microcontroller)</li>
+          <li>Color sensor (e.g., TCS3200)</li>
+          <li>2 Servo Motors (to control sorting mechanism)</li>
+          <li>9V Battery (for power supply)</li>
+        </ul>
+
+        <h4>🚀 Setup & Installation:</h4>
+        <ul>
+          <li><strong>Connect the Components:</strong> Wire the color sensor to the Arduino for color detection, connect servo motors to control ball movement, use a 9V battery to power the system</li>
+          <li><strong>Upload the Code:</strong> Open the Arduino IDE, load the color-ball-sorter.ino file, and upload it to the Arduino Uno</li>
+          <li><strong>Run the System:</strong> Place the balls into the feeder, and the system will sort red and blue balls accordingly</li>
+        </ul>
+
+        <h4>🔧 Future Improvements:</h4>
+        <ul>
+          <li>Support for more colors (e.g., green, yellow)</li>
+          <li>Enhanced accuracy for color detection</li>
+          <li>Optimized sorting speed</li>
+        </ul>
+
+        <div class="tech-stack">
+          <h4>Technologies Used:</h4>
+          <p>Arduino Uno, C/C++, TCS3200 Color Sensor, Servo Motors</p>
+          <br>
+          <h4>Documentation & Code:</h4>
+          <p><a href="https://github.com/lncadrnn/arduino-color-ball-sorter" target="_blank" style="color: var(--accent);">View Documentation & Code on GitHub →</a></p>
+          <br>
+          <h4>Demo Video:</h4>
+          <p>📹 <a href="img/lance - projects/color ball sorter/Arduino Color Ball Sorter.mp4" target="_blank" style="color: var(--accent);">Watch Demo Video →</a></p>
         </div>
       </div>
     </div>
