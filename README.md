@@ -23,7 +23,7 @@ Coders PH is a student-led development team from Cavite State University - Imus,
 
 ---
 
-## 🌟 Featured Project
+## 🌟 Featured Projects
 
 ### Chandria's La Robe - Gowns & Suit Rental Platform
 
@@ -40,6 +40,26 @@ A comprehensive rental management system that streamlines the process of renting
   - Inventory management system
   - Transaction tracking and management
   - Calendar view for rental appointments
+
+### 🍜 Ramenila - Restaurant Management System
+
+Welcome to the Ramenila Admin Dashboard! This project is a comprehensive admin panel designed to manage a ramen restaurant's inventory, sales, and overall operations efficiently.
+
+- **Client Side Features**:
+  - 🍜 Menu Display: Browse complete range of authentic Japanese dishes including various ramen, sides, drinks, and desserts
+  - 🛒 Order System: Easy-to-use ordering system with cart functionality
+  - 📱 Responsive Design: Fully responsive layout for all device sizes
+  - 🏠 Landing Page: Beautiful landing page with restaurant information and locations
+
+- **Admin Side Features**:
+  - 📊 Interactive Dashboard: Real-time view of daily sales, order metrics, and low stock alerts
+  - 📦 Inventory Management: Add, edit, and delete menu items with synchronized client-side display
+  - 💳 Transaction Management: Process incoming orders with real-time status updates
+  - 📜 Transaction History: Detailed view of all past orders with search and filter functionality
+  - 🔔 Notification System: User-friendly notifications for all admin actions
+  - ↔️ Collapsible Sidebar: Responsive sidebar for easy navigation
+
+**Tech Stack**: HTML5, CSS3, JavaScript (Vanilla), Font Awesome
 
 ---
 
