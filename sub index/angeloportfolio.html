@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angelo Panal - Portfolio | Coders PH</title>
+  <link rel="icon" type="image/png" href="img/LogoNoBG.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .portfolio-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+      padding: 120px 2rem 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .portfolio-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+      z-index: 1;
+    }
+    
+    .portfolio-floating-emoji {
+      position: absolute;
+      opacity: 0.15;
+      font-size: 1.8rem;
+      user-select: none;
+      pointer-events: none;
+      z-index: 2;
+      animation: portfolioFloat 10s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(1) {
+      top: 15%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .portfolio-floating-emoji:nth-child(2) {
+      top: 25%;
+      right: 15%;
+      animation-delay: 2s;
+      animation: portfolioFloatSlow 12s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(3) {
+      bottom: 30%;
+      left: 20%;
+      animation-delay: 4s;
+      animation: portfolioFloatBounce 8s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(4) {
+      bottom: 20%;
+      right: 25%;
+      animation-delay: 6s;
+      animation: portfolioFloatRotate 14s linear infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(5) {
+      top: 40%;
+      left: 5%;
+      animation-delay: 1s;
+      animation: portfolioFloatSlow 11s ease-in-out infinite;
+    }
+    
+    .portfolio-floating-emoji:nth-child(6) {
+      top: 60%;
+      right: 10%;
+      animation-delay: 3s;
+      animation: portfolioFloatBounce 9s ease-in-out infinite;
+    }
+    
+    @keyframes portfolioFloat {
+      0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.15;
+      }
+      33% { 
+        transform: translateY(-15px) translateX(10px) scale(1.05);
+        opacity: 0.25;
+      }
+      66% { 
+        transform: translateY(-8px) translateX(-5px) scale(0.95);
+        opacity: 0.2;
+      }
+    }
+    
+    @keyframes portfolioFloatSlow {
+      0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.15;
+      }
+      50% { 
+        transform: translateY(-20px) translateX(15px) scale(1.1);
+        opacity: 0.3;
+      }
+      66% { 
+        transform: translateY(-8px) translateX(12px) scale(0.98);
+        opacity: 0.18;
+      }
+    }
+    
+    @keyframes portfolioFloatBounce {
+      0%, 100% { 
+        transform: translateY(0px) scale(1);
+        opacity: 0.15;
+      }
+      25% { 
+        transform: translateY(-25px) scale(1.08);
+        opacity: 0.28;
+      }
+      75% { 
+        transform: translateY(-12px) scale(1.03);
+        opacity: 0.2;
+      }
+    }
+    
+    @keyframes portfolioFloatRotate {
+      0%, 100% { 
+        transform: rotate(0deg) translateY(0px);
+        opacity: 0.15;
+      }
+      50% { 
+        transform: rotate(180deg) translateY(-18px);
+        opacity: 0.25;
+      }
+    }
+    
+    .portfolio-intro {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .portfolio-intro img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      border: 4px solid var(--primary);
+    }
+    
+    .portfolio-intro h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .portfolio-intro p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .portfolio-intro p:nth-of-type(1) {
+      color: var(--light);
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+    
+    .portfolio-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .portfolio-link {
+      padding: 0.8rem 1.5rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .portfolio-link:hover {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: black;
+      transform: translateY(-3px);
+    }
+    
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .certificate-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .certificate-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    }
+    
+    .certificate-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .certificate-item h3 {
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+    
+    .certificate-item p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    .view-certificate {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .view-certificate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 0.8rem 1.5rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-link:hover {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html#team" class="back-link">← Back to Team</a>
+
+  <!-- Portfolio Hero -->
+  <section class="portfolio-hero">
+    <div class="portfolio-floating-emoji">🖥️</div>
+    <div class="portfolio-floating-emoji">🗄️</div>
+    <div class="portfolio-floating-emoji">⚙️</div>
+    <div class="portfolio-floating-emoji">🔧</div>
+    <div class="portfolio-floating-emoji">📊</div>
+    <div class="portfolio-floating-emoji">🐍</div>
+    
+    <div class="portfolio-intro">
+      <img src="../img/angelo.png" alt="Angelo Panal">
+      <h1>Angelo Panal</h1>
+      <p>Back-End Developer & Asst. Database Administrator</p>
+      <p>Passionate about developing server-side applications and assisting in database administration and optimization tasks. I specialize in creating efficient backend solutions that power modern web applications while ensuring data integrity and system performance. My approach combines technical expertise with attention to detail, focusing on building scalable systems that can grow with business needs. I take pride in writing clean, maintainable code and implementing robust database solutions that support seamless user experiences.</p>
+      
+      <div class="portfolio-links">
+        <a href="../index.html#contact" class="portfolio-link">📧 Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="cards-container">
+      <div class="card">
+        <h3>Backend Development</h3>
+        <p>I develop robust server-side applications with a focus on performance and scalability. My expertise includes creating RESTful APIs, implementing business logic, and ensuring secure data handling across all system components.</p>
+      </div>
+      <div class="card">
+        <h3>Database Administration</h3>
+        <p>I assist in database design, optimization, and maintenance tasks. My skills include query optimization, data modeling, backup strategies, and ensuring database security while maintaining optimal performance.</p>
+      </div>
+      <div class="card">
+        <h3>System Optimization</h3>
+        <p>I focus on improving system performance through code optimization, database tuning, and implementing efficient algorithms. My goal is to create systems that are both powerful and resource-efficient.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates">
+    <h2>Certifications & Achievements</h2>
+    <div class="certificates-grid">
+      <!-- Certificate cards will be added here when available -->
+      <!-- Example structure for future use:
+      <div class="certificate-item">
+        <div class="certificate-icon">🗄️</div>
+        <h3>Database Administration</h3>
+        <p>Certificate description</p>
+        <a href="path/to/certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      -->
+      <div class="card" style="text-align: center; padding: 3rem;">
+        <h3>Certificates Coming Soon</h3>
+        <p>Professional certifications and achievements will be displayed here once available.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3>Let's Collaborate</h3>
+        <p>Interested in working together on backend development or database projects? I'm open to new opportunities and collaborations.</p>
+        <a href="../index.html#contact" class="view-certificate" style="margin-top: 1.5rem; display: inline-block;">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Angelo Panal | Coders PH. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
