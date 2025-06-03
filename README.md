@@ -34,23 +34,23 @@ Coders PH is a student-led development team from Cavite State University - Imus,
   [GitHub](https://github.com/jerichodelosreyes) | jericho.dlsreyes@gmail.com
 
 - **Adrian Noroña**  
-  *Back-End Developer & Database Administrator*  
+  *Database Administrator*  
   [GitHub](https://github.com/noronaadrian) | leeadrian.noroña@cvsu.edu.ph
 
 - **Angelo Panal**  
-  *Back-End Developer & Database Administrator*  
-  [GitHub](https://github.com/angelopanal) | Server-side development & database management specialist
+  *Back-End Developer*  
+  [GitHub](https://github.com/angelopanal) | Server-side development specialist
 
 - **Justine Lawrence Coronel**  
-  *Front-End Developer & UI Designer*  
+  *Front-End Developer*  
   [GitHub](https://github.com/zen0001) | justine.coronel2@cvsu.edu.ph
 
 - **Christian Valenzuela**  
-  *Back-End Developer & UI/UX Designer*  
+  *Back-End Developer*  
   [GitHub](https://github.com/noxen-cv) | christian.valenzuela@gmail.com
 
 - **Gabriel Ordiales**  
-  *Technical Support, QA Tester, & Client Representative*  
+  *Client Representative*  
   [GitHub](https://github.com/cxaenj) | gabriel.ordiales@cvsu.edu.ph
 
 ---
