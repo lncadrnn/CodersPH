@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lance Adrian Acal - Portfolio | Coders PH</title>
-  <link rel="icon" type="image/png" href="img/LogoNoBG.png">
+  <link rel="icon" type="image/png" href="../img/Logo.png">
   <link rel="stylesheet" href="style.css">
   <style>    .portfolio-hero {
       background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
@@ -129,10 +129,11 @@
         opacity: 0.25;
       }
     }
-    
-    .portfolio-intro {
+      .portfolio-intro {
       max-width: 800px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
     
     .portfolio-intro img {
@@ -157,15 +158,14 @@
       color: var(--gray);
       margin-bottom: 2rem;
     }
-    
-    .portfolio-links {
+      .portfolio-links {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-    }
-    
-    .portfolio-link {
+      position: relative;
+      z-index: 15;
+    }    .portfolio-link {
       padding: 0.8rem 1.5rem;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
@@ -174,6 +174,10 @@
       text-decoration: none;
       transition: all 0.3s ease;
       position: relative;
+      z-index: 20;
+      pointer-events: auto;
+      cursor: pointer;
+      display: inline-block;
     }
     
     .portfolio-link:hover {
@@ -466,18 +470,17 @@
         <span class="brand">Coders PH</span>
       </div>
       <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">✕</button>
-    </div>
-    <ul class="mobile-nav-links">
-      <li><a href="../index.html#home">Home</a></li>
+    </div>    <ul class="mobile-nav-links">
+      <li><a href="../index.html">Home</a></li>
       <li><a href="../index.html#about">About</a></li>
-      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </nav>
 
   <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open mobile menu">☰</button>
   
-  <a href="../index.html#team" class="back-link" role="button" aria-label="Go back to team section">← Back to Team</a>
+  <a href="team.html" class="back-link" role="button" aria-label="Go back to team page">← Back to Team</a>
   <!-- Portfolio Hero -->
   <header class="portfolio-hero" role="banner">
     <div class="portfolio-floating-emoji">⚛️</div>
@@ -489,11 +492,10 @@
     <div class="portfolio-intro">
       <img src="../img/Lance.png" alt="Professional headshot of Lance Adrian Acal">
       <h1>Lance Adrian Acal</h1>
-      <p>Front-End Lead Developer & System Analyst</p>
+      <p>Front-End Developer & System Analyst</p>
       <p>Founder of Coders PH, I specialize in frontend development and data visualization with a passion for creating clean, modern web applications. I lead our team in transforming complex business requirements into intuitive digital solutions. My expertise spans from system analysis and architecture design to implementing cutting-edge frontend technologies that deliver exceptional user experiences. I believe in the power of well-crafted code to drive business success and user satisfaction.</p>
-      
-      <div class="portfolio-links">
-        <a href="mailto:lanceadrn.acal@gmail.com" class="portfolio-link" aria-label="Send email to Lance">📧 Email</a>
+        <div class="portfolio-links">
+        <a href="mailto:lanceadrn.acal@gmail.com" class="portfolio-link" aria-label="Send email to Lance" onclick="handleEmailClick(event, 'lanceadrn.acal@gmail.com')">📧 Email</a>
         <a href="https://github.com/lncadrnn" target="_blank" class="portfolio-link" aria-label="Visit Lance's GitHub profile">💻 GitHub</a>
         <a href="https://linkedin.com/in/lncadrnn" target="_blank" class="portfolio-link" aria-label="Visit Lance's LinkedIn profile">💼 LinkedIn</a>
       </div>
@@ -526,41 +528,41 @@
         <div class="certificate-icon">🌐</div>
         <h3>Basic Web Development</h3>
         <p>Foundational web development skills and modern frontend practices</p>
-        <a href="../Certificates/Basic Web Development Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <a href="../Certificates/lanceCerts/Basic Web Development Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
       
       <div class="certificate-item">
         <div class="certificate-icon">📊</div>
         <h3>Data Science</h3>
         <p>Data analysis, visualization, and statistical modeling techniques</p>
-        <a href="../Certificates/Data Science Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <a href="../Certificates/lanceCerts/Data Science Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
         <div class="certificate-item">
         <div class="certificate-icon">📊</div>
         <h3>Introduction to Excel</h3>
         <p>Foundational Excel skills, basic functions, and spreadsheet fundamentals</p>
-        <a href="../Certificates/Intro to Excel Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <a href="../Certificates/lanceCerts/Intro to Excel Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
       
       <div class="certificate-item">
         <div class="certificate-icon">📈</div>
         <h3>Advanced Excel</h3>
         <p>Advanced Excel functions, data analysis, and spreadsheet management</p>
-        <a href="../Certificates/Intro to Excel Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <a href="../Certificates/lanceCerts/Intro to Excel Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
       
       <div class="certificate-item">
         <div class="certificate-icon">📋</div>
         <h3>Power BI</h3>
         <p>Business intelligence, data visualization, and dashboard creation</p>
-        <a href="../Certificates/PowerBI Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <a href="../Certificates/lanceCerts/PowerBI Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
       
       <div class="certificate-item">
         <div class="certificate-icon">🐍</div>
         <h3>Python Fundamentals</h3>
         <p>Core Python programming concepts and application development</p>
-        <a href="../Certificates/Python Fundamentals Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <a href="../Certificates/lanceCerts/Python Fundamentals Certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
     </div>
   </section>
@@ -647,10 +649,57 @@
         }
       });
     }, observerOptions);
-    
-    document.querySelectorAll('.certificate-item').forEach(item => {
+      document.querySelectorAll('.certificate-item').forEach(item => {
       observer.observe(item);
+    });    // Debug email links
+    document.querySelectorAll('a[href^="mailto:"]').forEach(emailLink => {
+      emailLink.addEventListener('click', function(e) {
+        console.log('Email link clicked:', this.href);
+        
+        // Try alternative method if default doesn't work
+        try {
+          // Let the browser handle the mailto naturally
+          window.location.href = this.href;
+        } catch (error) {
+          console.error('Error opening email client:', error);
+          // Fallback: show alert with email address
+          alert('Please email us at: ' + this.href.replace('mailto:', ''));
+        }
+      });
     });
+    
+    // Email click handler function
+    window.handleEmailClick = function(event, email) {
+      // First try the natural mailto
+      try {
+        // Let the default action happen first
+        return true;
+      } catch (error) {
+        event.preventDefault();
+        // If mailto fails, offer alternatives
+        const message = `To contact ${email}, you can:\n\n1. Copy this email: ${email}\n2. Open your email client manually\n\nWould you like to copy the email address to clipboard?`;
+        if (confirm(message)) {
+          // Try to copy to clipboard
+          try {
+            navigator.clipboard.writeText(email).then(function() {
+              alert('Email address copied to clipboard!');
+            }).catch(function() {
+              // Fallback for older browsers
+              const textArea = document.createElement('textarea');
+              textArea.value = email;
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+              alert('Email address copied to clipboard!');
+            });
+          } catch (err) {
+            alert('Please manually copy this email: ' + email);
+          }
+        }
+        return false;
+      }
+    };
   </script>
   <script src="main.js"></script>
 </body>
