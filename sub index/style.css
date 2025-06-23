@@ -1003,6 +1003,17 @@ body.modal-open > *:not(.modal):not(.email-modal-overlay) {
   filter: blur(5px);
 }
 
+/* Team page specific styles */
+body[data-page="team"] .nav-links a[href*="team.html"],
+body[data-page="team"] .mobile-nav a[href*="team.html"] {
+  color: var(--accent) !important;
+}
+
+body[data-page="team"] .nav-links a[href*="team.html"]::after,
+body[data-page="team"] .mobile-nav a[href*="team.html"]::after {
+  width: 100% !important;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .nav-links {
