@@ -1,6 +1,18 @@
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Initialize active states for team page
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if we're on the team page and set active state
+  const isTeamPage = window.location.pathname.includes('team.html');
+  if (isTeamPage) {
+    const teamLinks = document.querySelectorAll('a[href*="team.html"]');
+    teamLinks.forEach(link => {
+      link.classList.add('active');
+    });
+  }
+});
+
 // Mobile Menu Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -67,6 +79,21 @@ window.addEventListener('scroll', function() {
 
 // Add active nav link highlighting
 window.addEventListener('scroll', function() {
+  // Check if we're on the team page
+  const isTeamPage = window.location.pathname.includes('team.html');
+  
+  // If we're on the team page, don't run the dynamic active link logic
+  if (isTeamPage) {
+    // Ensure Team links stay active on team page
+    const teamLinks = document.querySelectorAll('a[href*="team.html"]');
+    teamLinks.forEach(link => {
+      if (!link.classList.contains('active')) {
+        link.classList.add('active');
+      }
+    });
+    return;
+  }
+  
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
   

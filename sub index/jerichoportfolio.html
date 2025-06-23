@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jericho Delos Reyes - Portfolio | Coders PH</title>
-  <link rel="icon" type="image/png" href="img/LogoNoBG.png">
+  <link rel="icon" type="image/png" href="../img/Logo.png">
   <link rel="stylesheet" href="style.css">
+  
   <style>    .portfolio-hero {
       background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
       padding: 120px 2rem 80px;
@@ -129,10 +130,11 @@
         opacity: 0.25;
       }
     }
-    
-    .portfolio-intro {
+      .portfolio-intro {
       max-width: 800px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
     
     .portfolio-intro img {
@@ -157,15 +159,14 @@
       color: var(--gray);
       margin-bottom: 2rem;
     }
-    
-    .portfolio-links {
+      .portfolio-links {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-    }
-    
-    .portfolio-link {
+      position: relative;
+      z-index: 15;
+    }    .portfolio-link {
       padding: 0.8rem 1.5rem;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
@@ -173,6 +174,11 @@
       color: var(--light);
       text-decoration: none;
       transition: all 0.3s ease;
+      position: relative;
+      z-index: 20;
+      pointer-events: auto;
+      cursor: pointer;
+      display: inline-block;
     }
     
     .portfolio-link:hover {
@@ -254,7 +260,7 @@
   </style>
 </head>
 <body>
-  <a href="../index.html#team" class="back-link">← Back to Team</a>  <!-- Portfolio Hero -->
+  <a href="team.html" class="back-link">← Back to Team</a>  <!-- Portfolio Hero -->
   <section class="portfolio-hero">
     <div class="portfolio-floating-emoji">⚛️</div>
     <div class="portfolio-floating-emoji">🟩</div>
@@ -264,10 +270,10 @@
     <div class="portfolio-floating-emoji">📱</div>
     <div class="portfolio-intro">
       <img src="../img/Jericho.png" alt="Jericho Delos Reyes">
-      <h1>Jericho Delos Reyes</h1>      <p>Project Manager & Full-Stack Developer</p>
+      <h1>Jericho Delos Reyes</h1>      <p>Full-Stack Developer</p>
       <p>Managing project timelines and developing both frontend and backend applications while ensuring smooth team coordination and project delivery. I am passionate about bridging the gap between technical development and project management to deliver exceptional results. My approach combines strong leadership skills with hands-on development experience, allowing me to understand both the technical challenges and business requirements. I believe that successful projects require clear communication, efficient processes, and a collaborative team environment.</p>
         <div class="portfolio-links">
-        <a href="mailto:jericho.dlsreyes@gmail.com" class="portfolio-link">📧 Email</a>
+        <a href="mailto:jericho.dlsreyes@gmail.com" class="portfolio-link" aria-label="Send email to Jericho" onclick="handleEmailClick(event, 'jericho.dlsreyes@gmail.com')">📧 Email</a>
         <a href="https://github.com/jerichodelosreyes" target="_blank" class="portfolio-link">💻 GitHub</a>
         <a href="https://www.linkedin.com/in/jericho-delos-reyes-007468354/" target="_blank" class="portfolio-link">💼 LinkedIn</a>
       </div>
@@ -289,23 +295,36 @@
         <p>Skilled at fostering collaborative environments where team members can thrive and contribute their best work. I specialize in bridging the communication gap between technical teams and business stakeholders, translating complex technical concepts into actionable business insights. My leadership style promotes knowledge sharing, continuous learning, and collective problem-solving to achieve exceptional project outcomes.</p>
       </div>
     </div>
-  </section>
-  <!-- Certificates Section -->
+  </section>  <!-- Certificates Section -->
   <section id="certificates">
     <h2>Certifications & Achievements</h2>
     <div class="certificates-grid">
-      <!-- Certificate cards will be added here when available -->
-      <!-- Example structure for future use:
       <div class="certificate-item">
-        <div class="certificate-icon">📋</div>
-        <h3>Project Management</h3>
-        <p>Certificate description</p>
-        <a href="path/to/certificate.pdf" target="_blank" class="view-certificate">View Certificate</a>
+        <div class="certificate-icon">🌐</div>
+        <h3>Basic Web Development</h3>
+        <p>Foundational web development skills and modern frontend practices</p>
+        <a href="../Certificates/jerichoCerts/Jericho G. Delos Reyes Basic Web Development Workshop (May 25) - Certificate of Participation.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
-      -->
-      <div class="card" style="text-align: center; padding: 3rem;">
-        <h3>Certificates Coming Soon</h3>
-        <p>Professional certifications and achievements will be displayed here once available.</p>
+      
+      <div class="certificate-item">
+        <div class="certificate-icon">🤖</div>
+        <h3>AI Talks</h3>
+        <p>Understanding artificial intelligence concepts and applications</p>
+        <a href="../Certificates/jerichoCerts/AITalks.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      
+      <div class="certificate-item">
+        <div class="certificate-icon">⚙️</div>
+        <h3>Introduction to C++</h3>
+        <p>Core C++ programming concepts and object-oriented development</p>
+        <a href="../Certificates/jerichoCerts/introToC++.pdf" target="_blank" class="view-certificate">View Certificate</a>
+      </div>
+      
+      <div class="certificate-item">
+        <div class="certificate-icon">🗄️</div>
+        <h3>Introduction to SQL</h3>
+        <p>Database management and SQL query fundamentals</p>
+        <a href="../Certificates/jerichoCerts/introToSQL.pdf" target="_blank" class="view-certificate">View Certificate</a>
       </div>
     </div>
   </section>
@@ -323,7 +342,59 @@
   <footer class="footer">
     <p>© 2025 Jericho Delos Reyes | Coders PH. All rights reserved.</p>
   </footer>
-
   <script src="main.js"></script>
+  <script>
+    // Debug email links
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="mailto:"]').forEach(emailLink => {
+        emailLink.addEventListener('click', function(e) {
+          console.log('Email link clicked:', this.href);
+          
+          // Try alternative method if default doesn't work
+          try {
+            // Let the browser handle the mailto naturally
+            window.location.href = this.href;
+          } catch (error) {
+            console.error('Error opening email client:', error);
+            // Fallback: show alert with email address
+            alert('Please email us at: ' + this.href.replace('mailto:', ''));
+          }
+        });
+      });
+    });
+    
+    // Email click handler function
+    window.handleEmailClick = function(event, email) {
+      // First try the natural mailto
+      try {
+        // Let the default action happen first
+        return true;
+      } catch (error) {
+        event.preventDefault();
+        // If mailto fails, offer alternatives
+        const message = `To contact ${email}, you can:\n\n1. Copy this email: ${email}\n2. Open your email client manually\n\nWould you like to copy the email address to clipboard?`;
+        if (confirm(message)) {
+          // Try to copy to clipboard
+          try {
+            navigator.clipboard.writeText(email).then(function() {
+              alert('Email address copied to clipboard!');
+            }).catch(function() {
+              // Fallback for older browsers
+              const textArea = document.createElement('textarea');
+              textArea.value = email;
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+              alert('Email address copied to clipboard!');
+            });
+          } catch (err) {
+            alert('Please manually copy this email: ' + email);
+          }
+        }
+        return false;
+      }
+    };
+  </script>
 </body>
 </html>
